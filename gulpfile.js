@@ -1,16 +1,14 @@
 "use strict";
-// tslint:disable
-exports.__esModule = true;
-/*
-    Generated from typescript file
-*/
+
 var gulp = require("gulp");
 var tsc = require("gulp-typescript");
 var sourcemaps = require("gulp-sourcemaps");
 var watchTask;
 var wachAll = [];
+
 //
 //
+
 watchTask = {
     taskName: "serverTypeScripts",
     src: ["src/server/**/*.ts"],
@@ -28,8 +26,10 @@ wachAll.push(watchTask);
             .pipe(gulp.dest(dest));
     });
 })(watchTask.taskName, watchTask.src, watchTask.dest);
+
 //
 //
+
 watchTask = {
     taskName: "move_plain_files",
     src: ["src/public/**/*", "!src/**/*.ts", "!src/**/*.less"],
@@ -42,8 +42,10 @@ wachAll.push(watchTask);
             .pipe(gulp.dest(dest));
     });
 })(watchTask.taskName, watchTask.src, watchTask.dest);
+
 //
 //
+
 watchTask = {
     taskName: "move_views",
     src: ["src/server/**/*.ejs"],
@@ -56,8 +58,10 @@ wachAll.push(watchTask);
             .pipe(gulp.dest(dest));
     });
 })(watchTask.taskName, watchTask.src, watchTask.dest);
+
 //
 //
+
 watchTask = {
     taskName: "gulpfile",
     src: "./gulpfile.ts",
@@ -74,8 +78,10 @@ wachAll.push(watchTask);
             .pipe(gulp.dest(dest));
     });
 })(watchTask.taskName, watchTask.src, watchTask.dest);
+
 //
 //
+
 gulp.task("wacha", function () {
     wachAll.forEach(function (wacha) {
         console.log("Watching", wacha.taskName);
@@ -83,6 +89,7 @@ gulp.task("wacha", function () {
         // error TS2345: Argument of type 'string[]' is not assignable to parameter of type 'WatchOptions | undefined'
     });
 });
+
 // set allTasks as an array of names, example: ['typescripts', 'jades', 'htmls']
 var allTasks = (function () {
     var arr = [];
@@ -91,9 +98,7 @@ var allTasks = (function () {
     });
     return arr;
 })();
-// allTasks.push('watch_all');
-gulp.task("build", function () {
-});
-allTasks.push("build", "wacha"); // , 'Run_Karma_Tests'
-// @types are inconsistent:
-gulp.task("default", allTasks); // should be: gulp.parallel( allTasks );
+
+allTasks.push("wacha");
+
+gulp.task("default", allTasks);
