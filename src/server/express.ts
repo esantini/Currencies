@@ -17,7 +17,7 @@ app.set("view engine", "ejs");
 
 app.use(express.static(path.join(__dirname, "../public")));
 
-app.use("/", (req: express.Request, res: express.Response, next: express.NextFunction) => {
+app.use("/$", (req: express.Request, res: express.Response, next: express.NextFunction) => {
 	console.log("\nServing: home");
 	res.render("index", { page: "home" });
 });
