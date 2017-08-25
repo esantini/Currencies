@@ -32,7 +32,8 @@ wachAll.push(watchTask);
 
 watchTask = {
     taskName: "move_plain_files",
-    src: ["src/public/**/*", "!src/**/*.ts", "!src/**/*.less"],
+    // less files will be moved by webpack's less loader, instruction is in index.tsx
+    src: ["src/client/public/**/*", "!src/**/*.ts", "!src/**/*.less"],
     dest: "build/public/"
 };
 wachAll.push(watchTask);
