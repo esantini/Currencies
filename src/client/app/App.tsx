@@ -1,14 +1,35 @@
 import React from "react";
+import { Reducer } from "redux";
+import { Provider } from "react-redux";
 
-// tslint:disable:no-empty-interface
-interface IProps {}
-interface IState {}
+import SelectRate from "./containers/RateSelector";
+import ConvertControls from "./containers/ConvertControls";
 
-class App extends React.Component<IProps, IState> {
+import Store from "./Store";
+
+class App extends React.Component<{}, {}> {
 
 	public render(){
 		return (
-			<div>Hello RRREACTTTT</div>
+			<Provider store={ Store }><div>
+				<h3>Hello Converter</h3>
+
+				<ConvertControls />
+
+				<br />
+
+				<SelectRate />
+
+				Result:
+				<span id="result"></span>
+
+				<hr />
+				History:
+				<div>
+					<ul id="historyUL">
+					</ul>
+				</div>
+			</div></Provider>
 		);
 	}
 }
