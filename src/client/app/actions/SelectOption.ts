@@ -1,12 +1,5 @@
 
-import {  IAction } from "client/myTypes";
-
-// tslint:disable
-
-interface RateOption {
-	id: string;
-	name: string;
-}
+import { RateOption, IAction } from "client/myTypes";
 
 export const selectOption = (option: RateOption): IAction => {
 
@@ -14,11 +7,5 @@ export const selectOption = (option: RateOption): IAction => {
 		type: "RATE_SELECT",
 		payload: option,
 	};
-};
 
-var asdf = {
-	id: "",
-	name: "",
 };
-
-selectOption( asdf );
