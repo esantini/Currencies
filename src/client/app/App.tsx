@@ -7,7 +7,7 @@ import ConvertControls from "./containers/ConvertControls";
 
 import Store from "./Store";
 
-class App extends React.Component<{}, {}> {
+class App extends React.Component {
 
 	public render(){
 		return (

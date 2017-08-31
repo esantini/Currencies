@@ -1,11 +1,11 @@
 import { combineReducers } from "redux";
 
-import Conversions from "./Conversions";
-import RateOptions from "./RateOptions";
+import conversions from "./Conversions";
+import rateOptions from "./RateOptions";
 
 const allReducers = combineReducers({
-	conversions: Conversions,
-	rateOptions: RateOptions,
+	conversions,
+	rateOptions,
 });
 
 export default allReducers;
