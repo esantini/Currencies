@@ -1,23 +1,41 @@
 
 import { Action } from "redux";
 
-import { RateOption, ConversionState, ConversionAction } from "../../my-types";
-import optionsArray from "./RateOptions";
+import { RateOption, ConversionState, AnyAction } from "../../my-types";
+import RateOptions from "./RateOptions";
+
+const optionsArray = RateOptions();
 
 const initialState = {
 	quantity: 0,
-	rateSelected: optionsArray()[0],
+	rateSelected: optionsArray[0],
+	currentInput: 0,
 };
 
-export default function( state: ConversionState = initialState, action: ConversionAction): ConversionState {
+export default function( state: ConversionState = initialState, action: AnyAction): ConversionState {
 
 	switch (action.type) {
 		case "CONVERT":
 			state = {
-				quantity:     action.payload.quantity,
-				rateSelected: action.payload.rate,
+				...state,
+				quantity: action.payload,
 			};
-			// TODO NOTIFY CONVERT ?
+			break;
+		case "RATE_SELECT":
+			const newOption = optionsArray.find((option) => option.id === action.payload);
+			if (newOption)
+				state = {
+					...state,
+					rateSelected: {
+						...newOption, // TODO is this necesary?
+					},
+				};
+			break;
+		case "UPDATE_INPUT":
+			state = {
+				...state,
+				currentInput: action.payload,
+			};
 			break;
 	}
 

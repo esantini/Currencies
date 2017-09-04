@@ -10,27 +10,17 @@ export interface RateOption {
 export interface AllStates {
 	conversions: ConversionState;
 	rateOptions: RateOption[];
-	rateSelected: RateOption;
 }
 
 export interface ConversionState {
 	quantity: number;
 	rateSelected: RateOption;
+	currentInput: number;
 }
 
-export interface ConversionAction extends Action {
-	payload: ConversionPayload;
+export interface AnyAction extends Action {
+	payload: any;
 }
 
-export type ConvertAction = (payload: ConversionPayload) => ConversionAction;
-
-export interface ConversionPayload {
-	quantity: number;
-	rate: RateOption;
-}
-
-export interface SelectRateAction extends Action {
-	payload: string;
-}
-
+export type NumberAction = (payload: number) => AnyAction;
 

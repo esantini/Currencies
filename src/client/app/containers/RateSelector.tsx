@@ -2,22 +2,15 @@ import * as React from "react";
 import { connect } from "react-redux";
 import { Dispatch, bindActionCreators, Action } from "redux";
 
-import { selectOption } from "../actions/SelectOption";
-import { RateOption, AllStates } from "../../my-types";
-import { ReactElement } from "react";
+import { selectOption } from "../actions/mainActions";
+import { RateOption, AllStates, AnyAction } from "../../my-types";
 
 interface IProps {
 	rateOptions: RateOption[];
-	selectOption?: (rateOption: string) => IAction;
-}
-interface IState {
-	rateOptions: RateOption[];
-}
-interface IAction extends Action {
-	payload: any;
+	selectOption?: (rateOption: string) => AnyAction;
 }
 
-class RateSelector extends React.Component<IProps, IState> {
+class RateSelector extends React.Component<IProps> {
 
 	public render() {
 		return (
