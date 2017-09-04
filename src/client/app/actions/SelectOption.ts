@@ -1,11 +1,9 @@
 
-import { RateOption, IAction } from "client/myTypes";
+import { RateOption, SelectRateAction } from "../../my-types";
 
-export const selectOption = (option: RateOption): IAction => {
-
+export const selectOption = (option: string): SelectRateAction => {
 	return {
 		type: "RATE_SELECT",
 		payload: option,
 	};
-
 };

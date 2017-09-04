@@ -1,22 +1,25 @@
 
-import { IAction, RateOption } from "../../myTypes";
+import { Action } from "redux";
+
+import { RateOption, ConversionState, ConversionAction } from "../../my-types";
+import optionsArray from "./RateOptions";
 
 const initialState = {
-	USD: {
-		USD: 1,
-		MXN: 17.72,
-		EUR: 0.85,
-		INR: 64.05,
-		CAD: 1.25,
-		CNY: 6.66,
-	},
+	quantity: 0,
+	rateSelected: optionsArray()[0],
 };
 
-export default function(state: any = initialState, action: IAction) {
+export default function( state: ConversionState = initialState, action: ConversionAction): ConversionState {
 
 	switch (action.type) {
 		case "CONVERT":
-			//
+			if (typeof action.payload !== "number")
+				break;
+			state = {
+				...state,
+				quantity: action.payload,
+			};
+			// TODO NOTIFY CONVERT ?
 			break;
 	}
 

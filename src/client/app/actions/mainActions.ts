@@ -1,9 +1,9 @@
+import { Action } from "redux";
+import { RateOption, ConversionAction, ConversionPayload, ConvertAction } from "../../my-types";
 
-import { IAction } from "../../myTypes";
-
-export const convert = (): IAction => {
+export const convert: ConvertAction = (payload) => {
 	return {
-		type: "USER_SELECTED",
-		payload: undefined,
+		type: "CONVERT",
+		payload,
 	};
 };
