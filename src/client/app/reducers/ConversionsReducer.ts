@@ -19,7 +19,7 @@ export default function( state: ConversionState = initialState, action: AnyActio
 			// 	...state,
 			// 	quantity: action.payload,
 			// };
-			break;
+			return state;
 		case "RATE_SELECT":
 			const newOption = optionsArray.find((option) => option.id === action.payload);
 			if (newOption)
@@ -29,14 +29,15 @@ export default function( state: ConversionState = initialState, action: AnyActio
 						...newOption, // TODO is this necesary?
 					},
 				};
-			break;
+			return state;
 		case "UPDATE_INPUT":
 			state = {
 				...state,
 				currentInput: action.payload,
 			};
-			break;
+			return state;
+		default:
+			return state;
 	}
 
-	return state;
 }
