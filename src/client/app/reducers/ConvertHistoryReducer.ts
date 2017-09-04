@@ -1,5 +1,6 @@
 
 import { Action } from "redux";
+import update from "immutability-helper";
 
 import { AnyAction, HistoryState } from "../../my-types";
 
@@ -12,12 +13,13 @@ export default function( state: HistoryState = initialState, action: AnyAction):
 	switch (action.type) {
 		case "CONVERT":
 			state = {
-				history: state.history,
+				history: update(state.history, { $push:
+					[{
+						...action.payload,
+						date: new Date(),
+					}],
+				}),
 			};
-			state.history.push( {
-				...action.payload,
-				date: new Date(),
-			} );
 			break;
 	}
 
