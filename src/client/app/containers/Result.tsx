@@ -1,9 +1,13 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import { Dispatch, bindActionCreators, Action } from "redux";
-import { AllStates, ConversionState } from "../../my-types";
+import { AllStates, RateOption } from "../../my-types";
 
-class Result extends React.Component<ConversionState> {
+interface IResult {
+	currentInput: number;
+	rate: RateOption;
+}
+
+class Result extends React.Component<IResult> {
 
 	private static style: React.CSSProperties = {
 		border: "1px solid black",
@@ -16,24 +20,23 @@ class Result extends React.Component<ConversionState> {
 	public render() {
 		return (
 			<div style={ Result.style } >
-				Quantity: {this.props.quantity}
+				Quantity: {this.props.currentInput}
 				<hr />
-				Currency: {this.props.rateSelected.name}
+				Currency: {this.props.rate.name}
 				<hr />
-				Rate: {this.props.rateSelected.rate}
+				Rate: {this.props.rate.rate}
 				<hr />
-				Result: { this.props.quantity * this.props.rateSelected.rate }
+				Result: { this.props.currentInput * this.props.rate.rate }
 			</div>
 		);
 	}
 }
 
-function mapStateToProps(state: AllStates) {
-	const letsee = {
-		...state.conversions,
+function mapStateToProps(state: AllStates): IResult{
+	return {
+		currentInput: state.conversions.currentInput,
+		rate: state.conversions.rateSelected,
 	};
-// 	console.log("AVERRR", letsee);
-	return letsee;
 }
 
 export default connect(mapStateToProps)(Result);
