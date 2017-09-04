@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 
-import conversions from "./Conversions";
+import conversions from "./ConversionsReducer";
 import rateOptions from "./RateOptions";
 import rateSelected from "./RateSelected";
 
