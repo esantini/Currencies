@@ -1,6 +1,6 @@
-import { RecordConversion, NumberAction, StringAction } from "../../my-types";
+import { Convert, NumberAction, StringAction } from "../../my-types";
 
-export const convert: RecordConversion = (payload) => {
+export const convert: Convert = (payload) => {
 	return {
 		type: "CONVERT",
 		payload,

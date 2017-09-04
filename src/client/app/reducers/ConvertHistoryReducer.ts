@@ -1,22 +1,20 @@
 
 import { Action } from "redux";
 
-import { RateOption, ConversionState, AnyAction } from "../../my-types";
-import RateOptions from "./RateOptions";
+import { AnyAction, HistoryState } from "../../my-types";
 
-const optionsArray = RateOptions();
+const initialState: HistoryState = {
+	history: [],
+};
 
-interface IConversionRecord extends ConversionState {
-	date: Date;
-}
-
-const initialState: IConversionRecord[] = [];
-
-export default function( state: IConversionRecord[] = initialState, action: AnyAction): IConversionRecord[] {
+export default function( state: HistoryState = initialState, action: AnyAction): HistoryState {
 
 	switch (action.type) {
 		case "CONVERT":
-			state.push( {
+			state = {
+				history: state.history,
+			};
+			state.history.push( {
 				...action.payload,
 				date: new Date(),
 			} );

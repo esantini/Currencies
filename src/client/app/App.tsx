@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import SelectRate from "./containers/RateSelector";
 import ConvertControls from "./containers/ConvertControls";
 import Result from "./containers/Result";
+import HistoryList from "./containers/HistoryList";
 
 import Store from "./Store";
 
@@ -24,11 +25,9 @@ class App extends React.Component {
 				<Result />
 
 				<hr />
-				History:
-				<div>
-					<ul id="historyUL">
-					</ul>
-				</div>
+
+				<HistoryList />
+
 			</div></Provider>
 		);
 	}

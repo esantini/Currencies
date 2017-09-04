@@ -4,13 +4,13 @@ import { connect } from "react-redux";
 import { Dispatch, bindActionCreators } from "redux";
 
 import { convert, updateInput } from "../actions/mainActions";
-import { AllStates, RateOption, NumberAction, RecordConversion } from "client/my-types";
+import { AllStates, RateOption, NumberAction, Convert } from "client/my-types";
 
 interface IProps {
 	rateSelected: RateOption;
 	currentInput: number;
 	updateInput?: NumberAction;
-	convert?: RecordConversion;
+	convert?: Convert;
 }
 
 class ConvertControls extends React.Component<IProps> {

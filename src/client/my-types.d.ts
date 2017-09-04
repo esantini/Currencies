@@ -10,6 +10,7 @@ export interface RateOption {
 export interface AllStates {
 	conversions: ConversionState;
 	rateOptions: RateOption[];
+	history: HistoryState;
 }
 
 export interface ConversionState {
@@ -27,4 +28,14 @@ export interface ConvertAction extends Action {
 export type NumberAction = (payload: number) => AnyAction;
 export type StringAction = (payload: string) => AnyAction;
 
-export type RecordConversion = (payload: ConversionState) => ConvertAction;
+// History: 
+
+export type Convert = (payload: ConversionState) => ConvertAction;
+
+export interface HistoryRecord extends ConversionState {
+	date: Date;
+}
+
+export interface HistoryState {
+	history: HistoryRecord[];
+}
