@@ -11,13 +11,12 @@ const initialState = {
 
 export default function( state: ConversionState = initialState, action: ConversionAction): ConversionState {
 
+	console.log(state);
 	switch (action.type) {
 		case "CONVERT":
-			if (typeof action.payload !== "number")
-				break;
 			state = {
-				...state,
-				quantity: action.payload,
+				quantity:     action.payload.quantity,
+				rateSelected: action.payload.rate,
 			};
 			// TODO NOTIFY CONVERT ?
 			break;
