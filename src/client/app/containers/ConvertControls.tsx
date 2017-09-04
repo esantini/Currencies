@@ -35,7 +35,6 @@ class ConvertControls extends React.Component<IProps> {
 }
 
 function mapStateToProps(state: AllStates) {
-	console.log("AVERRRR");
 	return {
 		rateSelected: state.rateSelected,
 	};
