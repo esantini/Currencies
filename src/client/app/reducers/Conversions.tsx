@@ -11,7 +11,6 @@ const initialState = {
 
 export default function( state: ConversionState = initialState, action: ConversionAction): ConversionState {
 
-	console.log(state);
 	switch (action.type) {
 		case "CONVERT":
 			state = {
