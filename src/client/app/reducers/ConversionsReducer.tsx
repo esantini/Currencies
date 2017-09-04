@@ -6,8 +6,7 @@ import RateOptions from "./RateOptions";
 
 const optionsArray = RateOptions();
 
-const initialState = {
-	quantity: 0,
+const initialState: ConversionState = {
 	rateSelected: optionsArray[0],
 	currentInput: 0,
 };
@@ -16,10 +15,10 @@ export default function( state: ConversionState = initialState, action: AnyActio
 
 	switch (action.type) {
 		case "CONVERT":
-			state = {
-				...state,
-				quantity: action.payload,
-			};
+			// state = {
+			// 	...state,
+			// 	quantity: action.payload,
+			// };
 			break;
 		case "RATE_SELECT":
 			const newOption = optionsArray.find((option) => option.id === action.payload);

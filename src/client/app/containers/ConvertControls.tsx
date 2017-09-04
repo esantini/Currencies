@@ -4,13 +4,13 @@ import { connect } from "react-redux";
 import { Dispatch, bindActionCreators } from "redux";
 
 import { convert, updateInput } from "../actions/mainActions";
-import { AllStates, NumberAction, RateOption } from "client/my-types";
+import { AllStates, RateOption, NumberAction, RecordConversion } from "client/my-types";
 
 interface IProps {
 	rateSelected: RateOption;
 	currentInput: number;
 	updateInput?: NumberAction;
-	convert?: NumberAction;
+	convert?: RecordConversion;
 }
 
 class ConvertControls extends React.Component<IProps> {
@@ -25,7 +25,10 @@ class ConvertControls extends React.Component<IProps> {
 						} />
 				<button onClick={
 							(evt: React.MouseEvent<HTMLButtonElement>) => {
-								this.props.convert!( this.props.currentInput );
+								this.props.convert!( {
+									currentInput: this.props.currentInput,
+									rateSelected: this.props.rateSelected,
+								} );
 							}
 						} >
 					Convert

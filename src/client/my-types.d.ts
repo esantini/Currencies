@@ -13,7 +13,6 @@ export interface AllStates {
 }
 
 export interface ConversionState {
-	quantity: number;
 	rateSelected: RateOption;
 	currentInput: number;
 }
@@ -21,6 +20,11 @@ export interface ConversionState {
 export interface AnyAction extends Action {
 	payload: any;
 }
+export interface ConvertAction extends Action {
+	payload: ConversionState;
+}
 
 export type NumberAction = (payload: number) => AnyAction;
+export type StringAction = (payload: string) => AnyAction;
 
+export type RecordConversion = (payload: ConversionState) => ConvertAction;

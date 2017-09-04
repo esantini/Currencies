@@ -1,23 +1,22 @@
-import { } from "redux";
-import { RateOption, AnyAction } from "../../my-types";
+import { RecordConversion, NumberAction, StringAction } from "../../my-types";
 
-export const convert = (payload: number): AnyAction => {
+export const convert: RecordConversion = (payload) => {
 	return {
 		type: "CONVERT",
 		payload,
 	};
 };
 
-export const selectOption = (option: string): AnyAction => {
+export const selectOption: StringAction = (payload) => {
 	return {
 		type: "RATE_SELECT",
-		payload: option,
+		payload,
 	};
 };
 
-export const updateInput = (option: number): AnyAction => {
+export const updateInput: NumberAction = (payload) => {
 	return {
 		type: "UPDATE_INPUT",
-		payload: option,
+		payload,
 	};
 };
