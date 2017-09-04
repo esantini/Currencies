@@ -5,15 +5,23 @@ import { AllStates, ConversionState } from "../../my-types";
 
 class Result extends React.Component<ConversionState> {
 
+	private static style: React.CSSProperties = {
+		border: "1px solid black",
+		display: "inline-block",
+		padding: "10px",
+		minWidth: "20%",
+		textAlign: "center",
+	};
+
 	public render() {
 		return (
-			<div className="resultsDiv" >
+			<div style={ Result.style } >
 				Quantity: {this.props.quantity}
-				<br />
+				<hr />
 				Currency: {this.props.rateSelected.name}
-				<br />
+				<hr />
 				Rate: {this.props.rateSelected.rate}
-				<br />
+				<hr />
 				Result: { this.props.quantity * this.props.rateSelected.rate }
 			</div>
 		);
