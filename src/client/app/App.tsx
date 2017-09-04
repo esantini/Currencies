@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 
 import SelectRate from "./containers/RateSelector";
 import ConvertControls from "./containers/ConvertControls";
+import Result from "./containers/Result";
 
 import Store from "./Store";
 
@@ -20,8 +21,7 @@ class App extends React.Component {
 
 				<SelectRate />
 
-				Result:
-				<span id="result"></span>
+				<Result />
 
 				<hr />
 				History:
