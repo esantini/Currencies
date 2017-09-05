@@ -39,7 +39,7 @@ class HistoryList extends React.Component<IProps> {
 }
 
 function mapStateToProps(state: AllStates): IProps {
-	return { history: state.history.history };
+	return { history: state.history };
 }
 
 function mapDispatchToProps(dispatch: Dispatch<any>) {
