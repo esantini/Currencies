@@ -5,6 +5,7 @@ import { AllStates, RateOption } from "../../my-types";
 interface IResult {
 	currentInput: number;
 	rate: RateOption;
+	currentResult: number;
 }
 
 class Result extends React.Component<IResult> {
@@ -26,7 +27,7 @@ class Result extends React.Component<IResult> {
 				<hr />
 				Rate: {this.props.rate.rate}
 				<hr />
-				Result: { this.props.currentInput * this.props.rate.rate }
+				Result: { this.props.currentResult }
 			</div>
 		);
 	}
@@ -36,6 +37,7 @@ function mapStateToProps(state: AllStates): IResult{
 	return {
 		currentInput: state.conversions.currentInput,
 		rate: state.conversions.rateSelected,
+		currentResult: state.conversions.currentResult!,
 	};
 }
 

@@ -16,6 +16,7 @@ export interface AllStates {
 export interface ConversionState {
 	rateSelected: RateOption;
 	currentInput: number;
+	currentResult?: number;
 }
 
 export interface AnyAction extends Action {
