@@ -6,26 +6,36 @@ import { Dispatch, bindActionCreators } from "redux";
 import { convert, updateInput } from "../actions/mainActions";
 import { AllStates, RateOption, NumberAction, Convert } from "client/my-types";
 
-interface IProps {
+/*
+Removed "as any" from the default export with interfaces.
+
+Separated IProps into IStateProps and IAllProps
+
+Interface IStateProps contains only the data that comes from the state
+IAllProps extends IStateProps & includes the Actions.
+*/
+interface IStateProps {
 	rateSelected: RateOption;
 	currentInput: number;
-	updateInput?: NumberAction;
-	convert?: Convert;
+}
+interface IAllProps extends IStateProps {
+	updateInput: NumberAction;
+	convert: Convert;
 }
 
-class ConvertControls extends React.Component<IProps> {
+class ConvertControls extends React.Component<IAllProps> {
 	public render() {
 		return (
 			<div>
 				<label htmlFor="ConvertInput" >USD to {this.props.rateSelected.name}</label>
 				<input id="ConvertInput" type="number" onChange={
 							(evt: React.ChangeEvent<HTMLInputElement>) => {
-								this.props.updateInput!( evt.currentTarget.valueAsNumber );
+								this.props.updateInput( evt.currentTarget.valueAsNumber );
 							}
 						} />
 				<button onClick={
 							(evt: React.MouseEvent<HTMLButtonElement>) => {
-								this.props.convert!( {
+								this.props.convert( {
 									currentInput: this.props.currentInput,
 									rateSelected: this.props.rateSelected,
 								} );
@@ -38,7 +48,7 @@ class ConvertControls extends React.Component<IProps> {
 	}
 }
 
-function mapStateToProps(state: AllStates): IProps {
+function mapStateToProps(state: AllStates): IStateProps {
 	return {
 		rateSelected: state.conversions.rateSelected,
 		currentInput: state.conversions.currentInput,
@@ -49,4 +59,4 @@ function mapDispatchToProps( dispatch: Dispatch<any> ) {
 	return bindActionCreators( { convert, updateInput }, dispatch );
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ConvertControls as any);
+export default connect(mapStateToProps, mapDispatchToProps)(ConvertControls);
