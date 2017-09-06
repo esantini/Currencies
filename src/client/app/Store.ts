@@ -1,11 +1,22 @@
 import { createStore, applyMiddleware, AnyAction } from "redux";
 import thunk from "redux-thunk";
-import logger from "redux-logger";
+import { createLogger } from "redux-logger";
 import rxjs from "rxjs";
 
 import allReducers from "./reducers/AllReducers";
 
-const store = createStore(allReducers, {}, applyMiddleware(thunk, logger));
+const myLogger = createLogger({
+	predicate: (getState, action: AnyAction) => {
+		switch (action.type) { // Return false to ignore the following Action types:
+			case "UPDATE_INPUT": return false;
+			case "RATE_SELECT": return false;
+			default: return true;
+		}
+	},
+	collapsed: true,
+});
+
+const store = createStore(allReducers, {}, applyMiddleware(thunk, myLogger));
 
 store.dispatch((dispatch: (action: AnyAction) => void ): any => {
 
