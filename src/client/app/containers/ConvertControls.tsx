@@ -7,11 +7,11 @@ import { convert, updateInput } from "../actions/mainActions";
 import { AllStates, RateOption, NumberAction, Convert } from "client/my-types";
 
 /*
-Removed "as any" from the default export with interfaces.
+Removed "as any" from the default export with the following interfaces:
 
 Separated IProps into IStateProps and IAllProps
 
-Interface IStateProps contains only the data that comes from the state
+IStateProps contains only the data that comes from the state
 IAllProps extends IStateProps & includes the Actions.
 */
 interface IStateProps {
