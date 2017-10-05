@@ -1,7 +1,6 @@
 import { createStore, applyMiddleware, AnyAction } from "redux";
 import thunk from "redux-thunk";
 import { createLogger } from "redux-logger";
-import rxjs from "rxjs";
 
 import allReducers from "./reducers/AllReducers";
 
