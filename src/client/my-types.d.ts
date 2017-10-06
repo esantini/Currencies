@@ -4,7 +4,7 @@ import { Action } from "redux";
 export interface RateOption {
 	id: string;
 	name: string;
-	rate: number;
+	value: number | null;
 }
 
 export interface AllStates {
@@ -16,6 +16,7 @@ export interface AllStates {
 export interface ConversionState {
 	rateSelected: RateOption;
 	currentInput: number;
+	receivedData?: boolean;
 	currentResult?: number;
 }
 
@@ -33,6 +34,9 @@ export type StringAction = (payload: string) => AnyAction;
 
 export type Convert = (payload: ConversionState) => ConvertAction;
 
-export interface HistoryRecord extends ConversionState {
+export interface HistoryRecord {
 	date: Date;
+	rate: number;
+	rateId: string;
+	quantity: number;
 }

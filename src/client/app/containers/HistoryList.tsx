@@ -25,11 +25,11 @@ class HistoryList extends React.Component<IProps> {
 				return (
 					<li key={ record.date.getTime() } >
 						Converted
-						<strong> {record.currentInput} US Dollars </strong>
-						to
+						<strong> {record.quantity} US Dollars </strong>
+						to&nbsp;
 						<strong>
-							{ Math.round(record.rateSelected.rate * record.currentInput * 100) / 100 + " " }
-							{ record.rateSelected.name }
+							{ Math.round(record.rate * record.quantity * 100) / 100 + " " }
+							{ record.rateId }
 						</strong>
 					</li>
 				);

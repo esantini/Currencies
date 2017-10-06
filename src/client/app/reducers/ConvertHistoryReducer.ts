@@ -12,8 +12,10 @@ export default function( state: HistoryRecord[] = initialState, action: AnyActio
 		case "CONVERT":
 			state = update(state, { $push:
 					[{
-						...action.payload,
 						date: new Date(),
+						rate: action.payload.rateSelected.value,
+						rateId: action.payload.rateSelected.id,
+						quantity: action.payload.currentInput,
 					}],
 				});
 			break;

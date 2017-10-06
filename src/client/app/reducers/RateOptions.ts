@@ -1,35 +1,51 @@
 
-import { RateOption } from "../../my-types";
+import { RateOption, AnyAction } from "../../my-types";
 
-export default (): RateOption[] => [
+export default function(state = initialRates, action: AnyAction): RateOption[] {
+
+	switch (action.type) {
+		case "RECEIVE_DATA":
+
+			// TODO: how does immutability affect here?
+			for (const rateOption of state) {
+				rateOption.value = action.payload[rateOption.id];
+			}
+
+		default:
+			return state;
+	}
+}
+
+const initialRates =
+[
 	{
 		id: "USD",
 		name: "US Dollar",
-		rate: 1,
+		value: null,
 	},
 	{
 		id: "MXN",
 		name: "Mexican Peso",
-		rate: 17.72,
+		value: null,
 	},
 	{
 		id: "EUR",
 		name: "Euro",
-		rate: 0.85,
+		value: null,
 	},
 	{
 		id: "INR",
 		name: "Indian Rupee",
-		rate: 64.05,
+		value: null,
 	},
 	{
 		id: "CAD",
 		name: "Canadian Dollar",
-		rate: 1.25,
+		value: null,
 	},
 	{
 		id: "CNY",
 		name: "Chinese Yuan",
-		rate: 6.66,
+		value: null,
 	},
 ];

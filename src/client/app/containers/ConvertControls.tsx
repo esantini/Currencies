@@ -17,6 +17,7 @@ IAllProps extends IStateProps & includes the Actions.
 interface IStateProps {
 	rateSelected: RateOption;
 	currentInput: number;
+	receivedData: boolean;
 }
 interface IAllProps extends IStateProps {
 	updateInput: NumberAction;
@@ -24,7 +25,9 @@ interface IAllProps extends IStateProps {
 }
 
 class ConvertControls extends React.Component<IAllProps> {
+
 	public render() {
+
 		return (
 			<div>
 				<label htmlFor="ConvertInput" >USD to {this.props.rateSelected.name}</label>
@@ -33,7 +36,8 @@ class ConvertControls extends React.Component<IAllProps> {
 								this.props.updateInput( evt.currentTarget.valueAsNumber );
 							}
 						} />
-				<button onClick={
+				<button // TODO: disabled={!this.props.receivedData}
+					onClick={
 							(evt: React.MouseEvent<HTMLButtonElement>) => {
 								this.props.convert( {
 									currentInput: this.props.currentInput,
@@ -52,6 +56,7 @@ function mapStateToProps(state: AllStates): IStateProps {
 	return {
 		rateSelected: state.conversions.rateSelected,
 		currentInput: state.conversions.currentInput,
+		receivedData: state.conversions.receivedData!,
 	};
 }
 
